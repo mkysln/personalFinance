@@ -69,5 +69,5 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation (libs.library.sync)
     //noinspection UseTomlInstead
-    implementation("com.github.muminkayaaslan:My-Calendar:dca58c4ba8")
+    implementation("com.github.muminkayaaslan:My-Calendar:01d8170487")
 }

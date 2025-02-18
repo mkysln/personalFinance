@@ -368,25 +368,30 @@ fun MainScreen(paddingValues: PaddingValues, navController: NavHostController) {
                     LocalDate.now()
                 )
                 Spacer(Modifier.padding(vertical = 5.dp))
-                Calendar(
-                    modifier = Modifier
-                        .border(
-                            width = 0.5.dp,
-                            color = MaterialTheme.colorScheme.secondary,
-                            shape = RoundedCornerShape(15.dp)
-                        )
-                        .clip(
-                            RoundedCornerShape(15.dp)
-                        ),
-                    markedDays = markedDays,
-                    containerColor = MaterialTheme.colorScheme.background,
-                    headerColor = MaterialTheme.colorScheme.tertiary,
-                    currentDaysBorderColor = MaterialTheme.colorScheme.secondary,
-                    todayBorderColor = MaterialTheme.colorScheme.primary,
-                    todayTextColor = MaterialTheme.colorScheme.primary,
-                    selectedDayBorderColor = MaterialTheme.colorScheme.secondary,
+                Box(modifier = Modifier.border(
+                    width = 0.5.dp,
+                    color = MaterialTheme.colorScheme.secondary,
+                    shape = RoundedCornerShape(15.dp),
+                ).fillMaxWidth().weight(1f)){
+                    Calendar(
+                        modifier = Modifier
+                            .clip(
+                                RoundedCornerShape(15.dp)
+                            ),
+                        markedDays = markedDays,
+                        containerColor = MaterialTheme.colorScheme.background,
+                        headerColor = MaterialTheme.colorScheme.tertiary,
+                        currentDaysBorderColor = MaterialTheme.colorScheme.secondary,
+                        todayBorderColor = MaterialTheme.colorScheme.primary,
+                        todayTextColor = MaterialTheme.colorScheme.primary,
+                        selectedDayBorderColor = MaterialTheme.colorScheme.secondary,
+                        todaySelectedContainerColor = MaterialTheme.colorScheme.secondary,
+                        badgeFirstColor = MaterialTheme.colorScheme.primary,
+                        badgeTwoColor = MaterialTheme.colorScheme.secondary
 
-                )
+                    )
+
+                }
             }
         }
     }
