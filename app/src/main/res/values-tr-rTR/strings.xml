@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pay_reminder">Ödeme Hatırlatıcı</string>
+    <string name="history">Geçmiş</string>
+    <string name="calculations">Hesaplamalar</string>
+    <string name="my_account">Hesabım</string>
+    <string name="feedback">Geri Bildirim</string>
+    <string name="sign_out">Çıkış Yap</string>
+    <string name="balance">Bakiye:</string>
+    <string name="currency">₺</string>
+    <string name="date">Tarih</string>
+    <string name="reminder">Hatırlatma</string>
+    <string name="date_warning">Tarih formatını yanlış girdiniz!</string>
+    <string name="save">Kaydet</string>
+    <string name="update">Güncelle</string>
+    <string name="calculate">Hesapla</string>
+    <string name="income">Gelir</string>
+    <string name="expense">Gider</string>
+    <string name="auto_save">Otomatik kaydetmeye izin ver.</string>
+
+</resources>

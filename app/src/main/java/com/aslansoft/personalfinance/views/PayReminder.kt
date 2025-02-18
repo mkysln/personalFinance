@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.aslansoft.personalfinance.R
 import com.aslansoft.personalfinance.fonts.josefinSans
 
 @Composable
@@ -68,13 +70,13 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     }
                }
        }, singleLine = true,
-           label = { Text("Tarih") },
+           label = { Text(stringResource(R.string.date)) },
            visualTransformation = DateTransformation(),
            isError = error.value
        )
         Spacer(Modifier.padding(vertical = 2.dp))
         if (error.value){
-            Text("*Tarih formatını yanlış girdiniz.",
+            Text("*"+ stringResource(R.string.date_warning),
                 textAlign = TextAlign.Start, fontSize = 15.sp,
                 color = MaterialTheme.colorScheme.error)
         }
@@ -88,13 +90,14 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
             reminderNote = it
         }, singleLine = true,
             label = {
-                Text("Hatırlatma")
+                Text(stringResource(R.string.reminder))
             }, )
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
         ElevatedButton(onClick = {}) {
-            Text("Kaydet",
+            Text(
+                stringResource(R.string.save),
                 fontFamily = josefinSans)
         }
     }

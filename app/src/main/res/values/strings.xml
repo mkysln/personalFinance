@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">Personal Finance</string>
+    <string name="app_name" translatable="false">Personal Finance</string>
+    <string name="pay_reminder">Pay Reminder</string>
+    <string name="history">History</string>
+    <string name="calculations">Calculations</string>
+    <string name="my_account">My Account</string>
+    <string name="feedback">Feedback</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="balance">Balance:</string>
+    <string name="currency">$</string>
+    <string name="date">Date</string>
+    <string name="reminder">Reminder</string>
+    <string name="date_warning">You entered the wrong date format!</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="calculate">Calculate</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="auto_save">Allow automatic saving.</string>
+
 </resources>

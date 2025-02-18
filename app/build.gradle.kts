@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.aslansoft.personalfinance"
-        minSdk = 29
+        minSdk = 30
         //noinspection OldTargetApi,EditedTargetSdkVersion
         targetSdk = 35
         versionCode = 1
@@ -68,5 +68,6 @@ dependencies {
     implementation (libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
     implementation (libs.library.sync)
-
+    //noinspection UseTomlInstead
+    implementation("com.github.muminkayaaslan:My-Calendar:dca58c4ba8")
 }
