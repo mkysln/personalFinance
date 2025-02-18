@@ -9,11 +9,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Badge
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
@@ -27,8 +33,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
@@ -55,7 +65,13 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
     {
         val maxChar = 8
         val error = remember { mutableStateOf(false) }
-
+        ElevatedCard(modifier = Modifier.height(30.dp).fillMaxWidth(), colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary), shape = RoundedCornerShape(bottomEnd = 0.dp, bottomStart = 0.dp, topStart = 15.dp, topEnd = 15.dp)) {
+            LazyRow(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+                items(8) {
+                    Badge(containerColor = Color.Black, modifier = Modifier.size(15.dp))
+                }
+            }
+        }
         ElevatedCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(0.dp)) {
             Column {
                 Spacer(Modifier.padding(vertical = 10.dp))
@@ -85,7 +101,12 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     },
                     visualTransformation = DateTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    singleLine = true
+                    singleLine = true,
+                    textStyle = TextStyle(
+                        color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.Center, fontSize = 20.sp
+                    ),
+                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
                 )
                 HorizontalDivider()
                 Spacer(Modifier.padding(vertical = 2.dp))
@@ -93,7 +114,7 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
                         Text(
                             "*" + stringResource(R.string.date_warning),
-                            textAlign = TextAlign.Start, fontSize = 15.sp,
+                            textAlign = TextAlign.Start, fontSize = 20.sp,
                             color = MaterialTheme.colorScheme.error
                         )
                     }
@@ -101,7 +122,7 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     HorizontalDivider()
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(stringResource(R.string.reminder), textAlign = TextAlign.Center)
+                    Text(stringResource(R.string.reminder), textAlign = TextAlign.Center, fontSize = 20.sp)
 
                 }
                 HorizontalDivider()
@@ -109,12 +130,20 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     onValueChange = {
                         reminderNote = it
                     },
-                    singleLine = true)
+                    singleLine = true,
+                    textStyle = TextStyle(
+                        color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.Center, fontSize = 20.sp
+                    ),
+                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
+                )
 
                 HorizontalDivider()
                 Spacer(Modifier.padding(vertical = 10.dp))
             }
 
+        }
+        ElevatedCard(modifier = Modifier.height(30.dp).fillMaxWidth(), colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary), shape = RoundedCornerShape(bottomEnd = 15.dp, bottomStart = 15.dp, topStart = 0.dp, topEnd = 0.dp)) {
         }
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
@@ -122,7 +151,8 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
         ElevatedButton(onClick = {}) {
             Text(
                 stringResource(R.string.save),
-                fontFamily = josefinSans
+                fontFamily = josefinSans,
+                fontSize = 20.sp
             )
         }
     }
