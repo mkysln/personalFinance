@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
@@ -61,12 +62,23 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
             .padding(paddingValues = innerPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    )
-    {
+    ) {
         val maxChar = 8
         val error = remember { mutableStateOf(false) }
-        ElevatedCard(modifier = Modifier.height(30.dp).fillMaxWidth(), colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary), shape = RoundedCornerShape(bottomEnd = 0.dp, bottomStart = 0.dp, topStart = 15.dp, topEnd = 15.dp)) {
-            LazyRow(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+        ElevatedCard(
+            modifier = Modifier
+                .height(30.dp)
+                .fillMaxWidth(),
+            colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary),
+            shape = RoundedCornerShape(
+                bottomEnd = 0.dp, bottomStart = 0.dp, topStart = 15.dp, topEnd = 15.dp
+            )
+        ) {
+            LazyRow(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 items(8) {
                     Badge(containerColor = Color.Black, modifier = Modifier.size(15.dp))
                 }
@@ -76,7 +88,9 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
             Column {
                 Spacer(Modifier.padding(vertical = 10.dp))
                 HorizontalDivider()
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) { Text(stringResource(R.string.date)) }
+                Row(
+                    modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
+                ) { Text(stringResource(R.string.date), fontSize = 20.sp) }
 
                 HorizontalDivider()
                 BasicTextField(
@@ -104,38 +118,49 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
                     singleLine = true,
                     textStyle = TextStyle(
                         color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center, fontSize = 20.sp
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
                     ),
                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
                 )
                 HorizontalDivider()
                 Spacer(Modifier.padding(vertical = 2.dp))
                 if (error.value) {
-                    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
                         Text(
                             "*" + stringResource(R.string.date_warning),
-                            textAlign = TextAlign.Start, fontSize = 20.sp,
+                            textAlign = TextAlign.Start,
+                            fontSize = 20.sp,
                             color = MaterialTheme.colorScheme.error
                         )
                     }
 
                     HorizontalDivider()
                 }
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(stringResource(R.string.reminder), textAlign = TextAlign.Center, fontSize = 20.sp)
+                Row(
+                    modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        stringResource(R.string.reminder),
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp
+                    )
 
                 }
                 HorizontalDivider()
-                BasicTextField(modifier = Modifier.fillMaxWidth(),value = reminderNote,
-                    onValueChange = {
+                BasicTextField(
+                    modifier = Modifier.fillMaxWidth(), value = reminderNote, onValueChange = {
                         reminderNote = it
-                    },
-                    singleLine = true,
-                    textStyle = TextStyle(
+                    }, singleLine = true, textStyle = TextStyle(
                         color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center, fontSize = 20.sp
-                    ),
-                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    ), cursorBrush = SolidColor(MaterialTheme.colorScheme.primary)
                 )
 
                 HorizontalDivider()
@@ -143,16 +168,21 @@ fun PayReminder(innerPadding: PaddingValues, navController: NavHostController) {
             }
 
         }
-        ElevatedCard(modifier = Modifier.height(30.dp).fillMaxWidth(), colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary), shape = RoundedCornerShape(bottomEnd = 15.dp, bottomStart = 15.dp, topStart = 0.dp, topEnd = 0.dp)) {
-        }
+        ElevatedCard(
+            modifier = Modifier
+                .height(30.dp)
+                .fillMaxWidth(),
+            colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.secondary),
+            shape = RoundedCornerShape(
+                bottomEnd = 15.dp, bottomStart = 15.dp, topStart = 0.dp, topEnd = 0.dp
+            )
+        ) {}
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
         ElevatedButton(onClick = {}) {
             Text(
-                stringResource(R.string.save),
-                fontFamily = josefinSans,
-                fontSize = 20.sp
+                stringResource(R.string.save), fontFamily = josefinSans, fontSize = 20.sp
             )
         }
     }
